@@ -8,6 +8,7 @@ import Header from "@/components/header/Header"
 import { Fragment, useEffect, useState } from "react"
 import InitialLoad from "@/components/Loading/IntialLoad"
 import { Great_Vibes } from "next/font/google"
+import SocialsFloater from "@/components/social/Socials"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -54,6 +55,7 @@ export default function RootLayout({
             <Fragment>
               <Header />
               {children}
+              <SocialsFloater />
             </Fragment>
           )}
         </ThemeProvider>

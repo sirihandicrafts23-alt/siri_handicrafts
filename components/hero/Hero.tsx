@@ -1,9 +1,13 @@
 import Image from "next/image"
 import { Button } from "../ui/button"
+import HeroPageContent from "./components/HeroPageContent"
 
-function HeroComponent() {
+function HeroSection() {
   return (
-    <div className="relative min-h-dvh w-full overflow-hidden">
+    <section
+      className="relative min-h-dvh w-full overflow-hidden"
+      aria-label="Home Page section of siri handicrafts"
+    >
       {/* Desktop Image (visible >= 640px) */}
       <Image
         src="/hero/hero_desktop.png"
@@ -28,11 +32,9 @@ function HeroComponent() {
       <div className="absolute inset-0 z-5 bg-black/40" />
 
       {/* Page Content */}
-      {/* <div className="z-10 flex min-h-dvh flex-col items-center justify-center p-6 text-8xl text-red-500">
-        rtrwetetert
-      </div> */}
-    </div>
+      <HeroPageContent />
+    </section>
   )
 }
 
-export default HeroComponent
+export default HeroSection
