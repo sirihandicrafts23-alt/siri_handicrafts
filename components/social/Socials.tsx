@@ -12,7 +12,7 @@ function SocialsFloater() {
       className="fixed right-3 bottom-1/6 z-10 flex flex-row gap-1 opacity-80 hover:opacity-100 sm:right-40 sm:bottom-35"
     >
       <Card className="border-border bg-card/90 shadow-xl backdrop-blur-md">
-        <div className="flex flex-col gap-8 px-3 sm:flex-row">
+        <div className="flex flex-col gap-8 py-3 sm:flex-row sm:px-3 sm:py-0">
           <CardContent>
             <Link
               href={instagramLink}
