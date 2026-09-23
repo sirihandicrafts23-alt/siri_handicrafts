@@ -14,12 +14,10 @@ import {
 } from "../ui/drawer"
 import { Button } from "../ui/button"
 import { Rows3Icon } from "lucide-react"
-import { useIsMobile } from "@/hooks/use-mobile"
 import { useState } from "react"
 
 export default function Header() {
   const [open, setOpen] = useState(false)
-  const isMobile = useIsMobile()
 
   const handleSlider = () => {
     setOpen((prev) => !prev)
