@@ -1,14 +1,11 @@
-"use client"
-
-import { Geist, Geist_Mono } from "next/font/google"
+import type { Metadata } from "next"
+import { Geist, Geist_Mono, Great_Vibes } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server"
+import { ConvexClientProvider } from "./ConvexClientProvider"
 import { cn } from "@/lib/utils"
-import Header from "@/components/header/Header"
-import { Fragment, useEffect, useState } from "react"
-import InitialLoad from "@/components/Loading/IntialLoad"
-import { Great_Vibes } from "next/font/google"
-import SocialsFloater from "@/components/social/Socials"
+import AppShell from "@/components/AppShell"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -22,44 +19,38 @@ const greatVibes = Great_Vibes({
   subsets: ["latin"],
   variable: "--font-cursive",
 })
+// Amruta@23#Artist$
+export const metadata: Metadata = {
+  title: "Siri Handicrafts",
+  description: "Handcrafted traditional art and wooden reliefs",
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const [isLogoLoading, setIsLogoLoading] = useState<boolean>(true)
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLogoLoading(false)
-    }, 2500)
-  }, [])
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={cn(
-        "antialiased",
-        fontMono.variable,
-        "font-sans",
-        geist.variable,
-        greatVibes.variable
-      )}
-    >
-      <body>
-        <ThemeProvider>
-          {isLogoLoading ? (
-            <InitialLoad />
-          ) : (
-            <Fragment>
-              <Header />
-              {children}
-              <SocialsFloater />
-            </Fragment>
-          )}
-        </ThemeProvider>
-      </body>
-    </html>
+    <ConvexAuthNextjsServerProvider>
+      <html
+        lang="en"
+        suppressHydrationWarning
+        className={cn(
+          "antialiased",
+          fontMono.variable,
+          "font-sans",
+          geist.variable,
+          greatVibes.variable
+        )}
+      >
+        <body>
+          <ConvexClientProvider>
+            <ThemeProvider>
+              <AppShell>{children}</AppShell>
+            </ThemeProvider>
+          </ConvexClientProvider>
+        </body>
+      </html>
+    </ConvexAuthNextjsServerProvider>
   )
 }
