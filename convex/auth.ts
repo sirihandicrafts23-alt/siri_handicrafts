@@ -16,4 +16,7 @@ const CustomPassword = Password<DataModel>({
 
 export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
   providers: [CustomPassword],
+  session: {
+    totalDurationMs: 60 * 60 * 1000,
+  },
 })
