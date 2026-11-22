@@ -16,7 +16,7 @@ export default convexAuthNextjsMiddleware(async (request, { convexAuth }) => {
     return nextjsMiddlewareRedirect(request, "/")
   }
   if (isProtectedRoute(request) && !(await convexAuth.isAuthenticated())) {
-    return nextjsMiddlewareRedirect(request, "/signin")
+    return nextjsMiddlewareRedirect(request, "/account")
   }
 })
 
