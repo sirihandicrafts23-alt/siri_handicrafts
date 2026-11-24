@@ -10,6 +10,8 @@ interface CreateSubscriberInterface {
 type Response = {
   ok?: boolean
   error?: string
+  message?: string
+  status?: string
 } | null
 
 type Options = {

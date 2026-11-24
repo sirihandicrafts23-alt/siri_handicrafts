@@ -13,5 +13,5 @@ export default defineSchema({
   subscribers: defineTable({
     name: v.string(),
     email: v.string(),
-  }),
+  }).index("email", ["email"]),
 })

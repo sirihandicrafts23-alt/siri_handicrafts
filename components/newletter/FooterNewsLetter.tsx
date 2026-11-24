@@ -10,6 +10,7 @@ import {
   subscriberValidation,
 } from "@/validation/subsciberValidation"
 import { useAddSubscriber } from "@/hooks/useAddSubscriber"
+import { ConvexError } from "convex/values"
 
 export default function FooterNewsletter() {
   const [name, setName] = useState<string>("")
@@ -53,10 +54,20 @@ export default function FooterNewsletter() {
     }
 
     addNewSubscriber(result.data, {
-      onSuccess: () => {
+      onSuccess: (data) => {
+        if (data?.status === "already_subscribed") {
+          toast.add({
+            title: "Already Subscribed",
+            description: "This email is already on our mailing list. ❤️",
+            type: "success",
+          })
+          setEmail("")
+          return
+        }
+
         toast.add({
           title: "New Subscriber added",
-          description: "Thank you for subscribing to Siri Handicrafts",
+          description: "Thank you ❤️ for subscribing to Siri Handicrafts",
           type: "success",
         })
         setName("")
