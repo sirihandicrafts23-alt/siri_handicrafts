@@ -1,6 +1,7 @@
 import { defineSchema, defineTable } from "convex/server"
 import { authTables } from "@convex-dev/auth/server"
 import { v } from "convex/values"
+import { email } from "zod"
 
 export default defineSchema({
   ...authTables,
@@ -9,4 +10,8 @@ export default defineSchema({
     email: v.string(),
     phoneNumber: v.number(),
   }).index("email", ["email"]),
+  subscribers: defineTable({
+    name: v.string(),
+    email: v.string(),
+  }),
 })

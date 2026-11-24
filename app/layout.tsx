@@ -6,6 +6,7 @@ import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server"
 import { ConvexClientProvider } from "./ConvexClientProvider"
 import { cn } from "@/lib/utils"
 import AppShell from "@/components/AppShell"
+import { Toaster } from "@/components/ui/toast"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -49,6 +50,7 @@ export default function RootLayout({
               <AppShell>{children}</AppShell>
             </ThemeProvider>
           </ConvexClientProvider>
+          <Toaster timeout={2000} />
         </body>
       </html>
     </ConvexAuthNextjsServerProvider>
